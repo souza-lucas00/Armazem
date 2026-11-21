@@ -32,7 +32,12 @@ class CompartimentoConcorrenciaIntegrationTest {
     @Autowired
     private PlatformTransactionManager transactionManager;
 
-    // Verifica se uma atualização baseada em versão antiga é rejeitada.
+   // Verifica se o controle de concorrência otimista impede
+   // que uma atualização com versão antiga sobrescreva dados recentes.
+   //
+   // Este teste valida o comportamento do @Version no JPA.
+   // Ele não simula duas requisições HTTP simultâneas nem
+   // verifica o fluxo completo de cadastro e histórico.
     @Test
     void deveBloquearAtualizacaoComVersaoDesatualizada() {
 

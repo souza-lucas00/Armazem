@@ -56,6 +56,13 @@ class IngredienteRollbackIntegrationTest {
                 compartimentoRepository.findByCodigo("C1")
                         .orElseThrow();
 
+                // Verifica se C1 está vazio e ainda não possui um tipo definido.
+        assertEquals(0, compartimento.getQuantidadeAtual().compareTo(BigDecimal.ZERO));
+        assertEquals(null, compartimento.getTipoAtual());
+        assertEquals(null, compartimento.getDataUltimaUtilizacao());
+
+// Guarda o ID para realizar o cadastro.
+
         // Guarda o ID do compartimento.
         Long compartimentoId = compartimento.getId();
 
